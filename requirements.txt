@@ -1,0 +1,15 @@
+streamlit
+torch
+torchvision
+pillow
+pytesseract
+scikit-learn
+pandas
+numpy
+matplotlib
+tqdm
+huggingface_hub
+icrawler
+selenium
+webdriver-manager
+transformers

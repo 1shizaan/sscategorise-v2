@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pth
+*.pkl
+data/categorized_images/
+data/ocr_outputs/
+data/processed_dataset.csv
+*.pyc
+.env
+temp/
