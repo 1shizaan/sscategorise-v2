@@ -38,3 +38,5 @@ def predict(image_path: str, ocr_text: str) -> str:
  
 if __name__ == '__main__': 
     train_fusion_classifier() 
+
+#TESTING OF MY BRANCH CODE ON 12:32 14/3/26#
