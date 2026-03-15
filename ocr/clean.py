@@ -10,7 +10,7 @@ whitespace.
         return '' 
     text = raw.lower() 
     # Remove non-alphabetic characters (keep spaces) 
-    text = re.sub(r'[^a-z\s]', ' ', text) 
+    text = re.sub(r'[^a-z0-9\s]', ' ', text)
     # Remove standalone single characters (OCR noise) 
     text = re.sub(r'\b[a-z]{1}\b', '', text) 
     # Collapse multiple spaces 

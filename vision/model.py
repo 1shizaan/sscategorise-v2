@@ -9,7 +9,8 @@ import numpy as np
 from config import VISION_MODEL_PATH, NUM_CLASSES, IMAGE_SIZE
 
 transform = T.Compose([
-    T.Resize(IMAGE_SIZE),
+    T.Resize(320),
+    T.CenterCrop(300),
     T.ToTensor(),
     T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
@@ -21,7 +22,7 @@ def load_model():
     global _model_cache
     if _model_cache is not None:
         return _model_cache
-    m = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.IMAGENET1K_V1)
+    m = models.efficientnet_b3(weights=models.EfficientNet_B3_Weights.IMAGENET1K_V1)
     m.classifier[1] = torch.nn.Linear(m.classifier[1].in_features, NUM_CLASSES)
     if os.path.exists(VISION_MODEL_PATH):
         m.load_state_dict(torch.load(VISION_MODEL_PATH, map_location='cpu'))
@@ -40,7 +41,7 @@ def get_image_features(image_path: str, model=None) -> np.ndarray:
         img = Image.open(image_path).convert('RGB')
     except Exception as e:
         print(f'Could not open {image_path}: {e}')
-        return np.zeros(1280)
+        return np.zeros(1536)
     tensor = transform(img).unsqueeze(0)
     with torch.no_grad():
         feats = model.features(tensor)
